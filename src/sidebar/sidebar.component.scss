@@ -1,0 +1,28 @@
+.menu-active {
+    color: hsl(216, 91%, 58%);
+    background: rgb(243 245 249) !important;
+}
+.sub-menu-active {
+    background: rgba(19, 57, 141, 0.05);
+    border-radius: 6px;
+    color: #f58634;
+}
+.dropdown-menu {
+    // visibility: hidden;
+    opacity: 0;
+    animation: slide-down 0.3s ease forwards;
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: visible;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+

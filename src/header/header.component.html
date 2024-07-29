@@ -1,0 +1,15 @@
+<div class="relative pr-10">
+    <div class="flex justify-between items-center cursor-pointer" (click)="doToggleMenu()">
+        <img class="w-10 h-10 rounded-full" src="../assets/images/user.jpg" alt="Rounded avatar">
+        <span class="ml-2">MyProfile</span>
+        <i class="fas fa-caret-down absolute right-2 top-3"></i>
+    </div>
+    <div *ngIf="dropdownOpen" class="absolute right-0 t-10 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
+        <a class="block px-4 py-2 text-sm capitalize text-black cursor-pointer hover:text-white changePass" >
+            Change Password
+        </a>
+        <a class="block px-4 py-2 text-sm capitalize text-black hover:text-white cursor-pointer signOut" >
+            Sign Out
+        </a>
+    </div>
+</div>
