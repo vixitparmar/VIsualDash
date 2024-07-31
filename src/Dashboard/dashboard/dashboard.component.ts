@@ -172,6 +172,27 @@ export class DashboardComponent implements OnInit {
     )
   }
 
+  processData(data: DataItem[]): void {
+    const intensity: number[] = [];
+    const likelihood: number[] = [];
+    const relevance: number[] = [];
+    const labels: string[] = [];
+    const country: string[] = [];
+    const end_date: string[] = [];
+    data.forEach((item: DataItem) => {
+      intensity.push(item.intensity);
+      likelihood.push(item.likelihood);
+      relevance.push(item.relevance);
+      labels.push(item.topic);
+      country.push(item.country);
+      end_date.push(item.end_year);
+    });
+    this.barChartData[0].data = intensity;
+    this.barChartData[1].data = likelihood;
+    this.barChartData[2].data = relevance;
+    this.barChartLabels = labels;
+  }
+  
   applyFilters(): void {
     this.filtersApplied = true;
     this.dataService.getData().subscribe(data => {
@@ -232,8 +253,8 @@ export class DashboardComponent implements OnInit {
       this.dataService.deleteData(id).subscribe(
         response => {
           console.log(response.message);
-          this.loadData();
           this.ShowToast(`Data Deleted Successfully !!!`, 'success');
+          this.loadData();
         },
         error => {
           console.error('Error deleting data:', error.message);
@@ -241,7 +262,7 @@ export class DashboardComponent implements OnInit {
         }
       );
   }
-  
+
   onUpdate(item: any): void {
     this.currentItem = item;
     this.updateDataForm.patchValue(item);
@@ -270,26 +291,7 @@ export class DashboardComponent implements OnInit {
     this.processData(this.updateData);
   }
 
-  processData(data: DataItem[]): void {
-    const intensity: number[] = [];
-    const likelihood: number[] = [];
-    const relevance: number[] = [];
-    const labels: string[] = [];
-    const country: string[] = [];
-    const end_date: string[] = [];
-    data.forEach((item: DataItem) => {
-      intensity.push(item.intensity);
-      likelihood.push(item.likelihood);
-      relevance.push(item.relevance);
-      labels.push(item.topic);
-      country.push(item.country);
-      end_date.push(item.end_year);
-    });
-    this.barChartData[0].data = intensity;
-    this.barChartData[1].data = likelihood;
-    this.barChartData[2].data = relevance;
-    this.barChartLabels = labels;
-  }
+
 
   ShowToast(message: string, toastType: string) {
     this.message = message;

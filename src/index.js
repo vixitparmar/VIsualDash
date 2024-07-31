@@ -27,6 +27,7 @@ app.get('/api/data', async (req, res) => {
 app.post('/api/data', async (req, res) => {
   try {
     let dataItem = req.body
+    dataItem._id = new mongoose.Types.ObjectId().toString();
     // Insert the data into MongoDB
     const result = await collection.insertOne(dataItem);
 
