@@ -192,7 +192,7 @@ export class DashboardComponent implements OnInit {
     this.barChartData[2].data = relevance;
     this.barChartLabels = labels;
   }
-  
+
   applyFilters(): void {
     this.filtersApplied = true;
     this.dataService.getData().subscribe(data => {
@@ -255,6 +255,7 @@ export class DashboardComponent implements OnInit {
           console.log(response.message);
           this.ShowToast(`Data Deleted Successfully !!!`, 'success');
           this.loadData();
+          this.applyFilters();
         },
         error => {
           console.error('Error deleting data:', error.message);
@@ -279,6 +280,7 @@ export class DashboardComponent implements OnInit {
           this.loadData();
           this.updateModalClose();
           this.ShowToast(`Data Updated Successfully !!!`, 'success');
+          this.applyFilters();
         },
         error => {
           console.error('Update failed:', error);
