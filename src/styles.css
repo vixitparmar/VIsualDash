@@ -3,6 +3,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes fadeDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeDown {
+    animation: fadeDown 0.5s ease-out;
+  }
+
 ::-webkit-scrollbar {
-    width: 2px; /* Set the width of the scrollbar */
+    width: 2px;
+    /* Set the width of the scrollbar */
 }

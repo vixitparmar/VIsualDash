@@ -5,10 +5,12 @@
   >
     <div
       class="flex p-4 justify-center items-center rounded-lg"
-      [ngClass]="{
-        'bg-teal-400': type === 'success',
-        'bg-red-500': type === 'error'
-      }"
+      [ngClass]="[
+      type === 'success' ? 'bg-teal-400' : '',
+      type === 'error' ? 'bg-red-500' : '',
+      customClass,
+      'animate-fadeDown'
+    ]"
     >
       {{ message }}
     </div>

@@ -13,9 +13,9 @@ export class VisualDataService {
 
   constructor(private http: HttpClient) { }
   
-  login(data: any) {
-    return this.http.post(`${this.apiUrl}/login`, data)
-  }
+  // login(data: any) {
+  //   return this.http.post(`${this.apiUrl}/login`, data)
+  // }
 
   getData(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/api/data`);
